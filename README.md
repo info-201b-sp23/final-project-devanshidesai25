@@ -1,7 +1,7 @@
-# Title of Your Final Project Here 
+# A Global Analysis of Coral Reef Bleaching
 ## INFO 201 "Foundational Skills for Data Science" — Winter 2023
 
-Authors: Your names here
+Authors: Devanshi Desai, Yinpeng Cheng, Yikai Wang, Emily Zhu
 
 **Link: Link to your Shiny App here**
 
