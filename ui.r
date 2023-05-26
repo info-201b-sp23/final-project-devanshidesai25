@@ -23,8 +23,10 @@ my_ui <- navbarPage(
   ),
   tabPanel("Coral Reef Bleaching by Oceans",
            plotlyOutput("bleaching_oceans"),
-           selectInput("ocean", "Select an Ocean:",
-                       choices = unique(coral_reef_data$Ocean)
+           checkboxGroupInput("ocean", "Select an Ocean:",
+                       choices = unique(coral_reef_data$Ocean),
+                       selected = "Pacific"
+                       
             ), 
            sliderInput("years", "Select a Range of Years:",
                        min = min(coral_reef_data$Year),

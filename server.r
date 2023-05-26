@@ -24,22 +24,22 @@ my_server <- function(input, output, session) {
         opacity = 0.5,
         fillOpacity = 0.5
       )
-    return(map)
+    map
   })
   
   output$bleaching_oceans <- renderPlotly({
     
     selected_oceans_years <- coral_reef_data %>%
-      filter(Ocean %in% input$user_selection) %>%
-      filter(Year >= input$year_range[1], Year <= input$year_range[2])
+      filter(Ocean %in% input$ocean) %>%
+      filter(Year >= input$years[1], Year <= input$years[2])
     
-    reef_by_ocean <- ggplot(coral_reef_data, aes(x = Year, y = bleaching, color = Ocean)) + 
+    reef_by_ocean <- ggplot(selected_oceans_years, aes(x = Year, y = bleaching, color = Ocean)) + 
       geom_line() +
       labs(title = "Bleaching by Ocean and Year",
            x = "Year",
            y = "Bleaching")
     
-    return(ggplotly(reef_by_ocean))
+   ggplotly(reef_by_ocean)
   })
   
 }
