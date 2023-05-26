@@ -9,7 +9,7 @@ my_server <- function(input, output, session) {
   
   output$bleaching_map <- renderLeaflet({
     selected_intervals_data <- reef_data %>%
-      filter(interval == input$user_interval)
+      filter(interval %in%  input$user_interval)
     map <- leaflet() %>%
       setView(lng = 0, lat = 0, zoom = 2)
     map <- map %>%
@@ -28,7 +28,6 @@ my_server <- function(input, output, session) {
   })
   
   output$bleaching_oceans <- renderPlotly({
-    
     selected_oceans_years <- coral_reef_data %>%
       filter(Ocean %in% input$ocean) %>%
       filter(Year >= input$years[1], Year <= input$years[2])
@@ -39,7 +38,7 @@ my_server <- function(input, output, session) {
            x = "Year",
            y = "Bleaching")
     
-   ggplotly(reef_by_ocean)
+    ggplotly(reef_by_ocean)
   })
   
 }
