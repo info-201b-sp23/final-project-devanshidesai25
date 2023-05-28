@@ -13,6 +13,7 @@ my_ui <- navbarPage(
   id = "navbar",
   tabPanel("Introduction"),
   tabPanel("Map of Coral Reef Bleachings",
+           h3("Coral Reef Bleachings around the World"),
            sidebarLayout(
              mainPanel(
                leafletOutput("bleaching_map")
@@ -20,7 +21,7 @@ my_ui <- navbarPage(
              sidebarPanel(
                selectInput(
                  inputId = "user_interval",
-                 label = "Bleaching Level",
+                 label = "Select bleaching level:",
                  choices = reef_data$interval,
                  selected = "50 and above",
                  multiple = TRUE
@@ -31,10 +32,11 @@ my_ui <- navbarPage(
   tabPanel("Coral Reef Bleaching by Oceans",
            sidebarLayout(
              mainPanel(
+               h3("Coral Reef Bleachings by Year in Different Oceans"),
                plotlyOutput("bleaching_oceans")
              ),
              sidebarPanel(
-               checkboxGroupInput("ocean", "Select an Ocean:",
+               checkboxGroupInput("ocean", "Select an ocean:",
                                   choices = unique(coral_reef_data$Ocean),
                                   selected = "Pacific"
                ),
@@ -47,9 +49,10 @@ my_ui <- navbarPage(
              )
            )
   ),
-  tabPanel("Main Causes of Coral Reef Bleaching",
+  tabPanel("Causes of Coral Reef Bleaching",
            sidebarLayout(
              mainPanel(
+               h3("Impacts of Different Factors on Coral Reef Bleaching"),
                plotlyOutput("bleaching_factors")
              ),
              sidebarPanel(

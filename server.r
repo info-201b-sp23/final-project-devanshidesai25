@@ -36,8 +36,7 @@ my_server <- function(input, output, session) {
     
     reef_by_ocean <- ggplot(selected_oceans_years, aes(x = Year, y = bleaching, color = Ocean)) + 
       geom_line() +
-      labs(title = "Bleaching by Ocean and Year",
-           x = "Year",
+      labs(x = "Year",
            y = "Bleaching")
     
     ggplotly(reef_by_ocean)
@@ -55,8 +54,7 @@ my_server <- function(input, output, session) {
     
     bar_chart <- ggplot(reshaped_data, aes(x = Year, y = !!sym(input$level), fill = !!sym(input$level))) +
       geom_col(position = "stack") +
-      labs(title = "Important Factors that Affect Coral Reef Bleaching",
-           x = "Year",
+      labs(x = "Year",
            y = "Number of Corals Impacted"
       ) +
       scale_fill_continuous(name = "Number of Corals Impacted")
