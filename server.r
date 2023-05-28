@@ -4,7 +4,6 @@ source("causes_data.r")
 library("dplyr")
 library("plotly")
 library("leaflet")
-install.packages("tidyr")
 library("tidyr")
 library("rlang")
 
