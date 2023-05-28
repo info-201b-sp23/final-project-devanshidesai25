@@ -5,8 +5,10 @@ library("plotly")
 source("map_data.r")
 source("ocean_data.r")
 source("causes_data.r")
+library("bslib")
 
 my_ui <- navbarPage(
+  theme = bs_theme(bootswatch = "minty"),
   title = "A Global Analysis of Coral Reef Bleachings",
   id = "navbar",
   tabPanel("Introduction"),
@@ -67,5 +69,6 @@ my_ui <- navbarPage(
                )
              )
            )
-  )
+  ),
+  tabPanel("Conclusion")
 )
