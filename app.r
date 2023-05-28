@@ -5,3 +5,4 @@ source("server.r")
 
 # Runs the application (both ui and server)
 shinyApp(ui = my_ui, server = my_server)
+

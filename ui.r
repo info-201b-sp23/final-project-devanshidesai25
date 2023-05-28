@@ -4,6 +4,7 @@ library("leaflet")
 library("plotly")
 source("map_data.r")
 source("ocean_data.r")
+source("causes_data.r")
 
 my_ui <- navbarPage(
   title = "A Global Analysis of Coral Reef Bleachings",
@@ -33,6 +34,24 @@ my_ui <- navbarPage(
                        max = max(coral_reef_data$Year),
                        value = c(min(coral_reef_data$Year), max(coral_reef_data$Year)),
                        step = 1)
+  ),
+  tabPanel("Main Causes of Coral Reef Bleaching",
+           plotlyOutput("bleaching_factors"),
+           selectInput(
+             inputId= "factor",
+             label = "Bleaching Causes",
+             choices = c("HumanImpact", "Dynamite", "Poison", "Sewage", "Commercial", "Industrial"),
+             selected = "HumanImpact",
+             multiple = FALSE
+           ),
+           selectInput(
+             inputId = "level",
+             label = "Level of Impact",
+             choices = c("low", "moderate", "high"),
+             selected = "moderate",
+             multiple = FALSE
+           )
   )
+    
 
 )

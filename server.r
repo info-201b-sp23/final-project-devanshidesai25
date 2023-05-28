@@ -1,9 +1,12 @@
 source("map_data.r")
 source("ocean_data.r")
+source("causes_data.r")
 library("dplyr")
 library("plotly")
 library("leaflet")
-
+install.packages("tidyr")
+library("tidyr")
+library("rlang")
 
 my_server <- function(input, output, session) {
   
@@ -39,6 +42,27 @@ my_server <- function(input, output, session) {
            y = "Bleaching")
     
     ggplotly(reef_by_ocean)
+  })
+  
+  output$bleaching_factors <- renderPlotly({
+    selected_causes_data <- causes_data %>%
+      group_by(Year, !!sym(input$factor), .groups = "drop") %>%
+      summarize(count = n(), .groups = "drop") %>%
+      ungroup()
+    
+    reshaped_data <- selected_causes_data %>%
+      pivot_wider(names_from = !!sym(input$factor), values_from = count) %>%
+      replace(is.na(.), 0)
+    
+    bar_chart <- ggplot(reshaped_data, aes(x = Year, y = !!sym(input$level), fill = !!sym(input$level))) +
+      geom_col(position = "stack") +
+      labs(title = "Important Factors that Affect Coral Reef Bleaching",
+           x = "Year",
+           y = "Number of Corals Impacted"
+      ) +
+      scale_fill_continuous(name = "Number of Corals Impacted")
+    
+    ggplotly(bar_chart)
   })
   
 }
