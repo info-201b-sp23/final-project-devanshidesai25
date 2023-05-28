@@ -129,5 +129,11 @@ my_ui <- navbarPage(
              )
            )
   ),
-  tabPanel("Conclusion")
+  tabPanel("Conclusion",
+           fluidPage(
+             titlePanel("Conclusion and Recommendations"),
+             tags$p("In conclusion, our analysis of coral reef bleachings has provided valuable insights into the extent, causes, and geographical distribution of these events. Through the exploration of relevant data and comprehensive research, we have deepened our understanding of the challenges facing coral reef ecosystems and the urgent need for conservation efforts. Based on our findings, we present the following key conclusions and recommendations:"),
+           )
+  )
 )
+  
