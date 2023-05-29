@@ -7,7 +7,9 @@ source("ocean_data.r")
 source("causes_data.r")
 library("bslib")
 
+
 my_ui <- navbarPage(
+  theme = bs_theme(bootswatch = "minty"),
   title = "A Global Analysis of Coral Reef Bleachings",
   id = "navbar",
   tabPanel("Introduction",
@@ -68,27 +70,44 @@ my_ui <- navbarPage(
   
   
   
-  tabPanel("Map of Coral Reef Bleachings",
-           h3("Coral Reef Bleachings around the World"),
-           sidebarLayout(
-             mainPanel(
-               leafletOutput("bleaching_map")
-             ),
-             sidebarPanel(
-               selectInput(
-                 inputId = "user_interval",
-                 label = "Select bleaching level:",
-                 choices = reef_data$interval,
-                 selected = "50 and above",
-                 multiple = TRUE
-               )
-             )
-           )
+  tabPanel(
+    "Map of Coral Reef Bleachings",
+    h3("Coral Reef Bleachings around the World"),
+    sidebarLayout(
+      mainPanel(
+        leafletOutput("bleaching_map")
+      ),
+      sidebarPanel(
+        selectInput(
+          inputId = "user_interval",
+          label = "Select bleaching level:",
+          choices = reef_data$interval,
+          selected = "50 and above",
+          multiple = TRUE
+        )
+      )
+    ),
+    p(" "),
+    p("By creating this visualization, we aimed to understand what areas were most 
+      affected by coral reef bleachings. In the widget, you can choose different levels 
+      of bleaching. Each dot on the map is a coral reef colony, and the levels indicate 
+      the number of corals in the colony that have been affected, such as less than ten 
+      colonies or fifty or above colonies."),
+    p("By visualizing which areas and reefs are most affected by coral bleaching, 
+      we can begin to understand possible reasons for coral bleaching. For example, 
+      areas with higher temperatures and higher risks of global warming, such as areas 
+      closer to the equator, have higher bleaching levels and more colonies that 
+      have experienced bleaching, because increased water temperatures are a 
+      significant cause of coral bleaching. Another significant factor in coral 
+      bleaching is human impacts, such as sewage leaks, poison leaks, tourism, 
+      and water activities. Our visualization of the affected areas can give us a 
+      good idea of which countries and locations are contributing the most to 
+      coral bleaching.")
   ),
   tabPanel("Coral Reef Bleaching by Oceans",
+           h3("Coral Reef Bleachings by Year in Different Oceans"),
            sidebarLayout(
              mainPanel(
-               h3("Coral Reef Bleachings by Year in Different Oceans"),
                plotlyOutput("bleaching_oceans")
              ),
              sidebarPanel(
@@ -103,19 +122,26 @@ my_ui <- navbarPage(
                            step = 1
                )
              )
-           )
+           ),
+           p("By creating this visualization, we aimed to understand in which oceans 
+           are coral reef bleaching most frequent, and how has this changed over time. 
+           By understanding which oceans have the highest bleaching frequencies, we 
+           can understand the underlying causes of bleaching and how things like water 
+           temperature, storms, and other human activities in nearby places are 
+           affecting the coral reefs, and how these factors have all changed over time.")
   ),
   tabPanel("Causes of Coral Reef Bleaching",
+           h3("Impacts of Different Factors on Coral Reef Bleaching"),
            sidebarLayout(
              mainPanel(
-               h3("Impacts of Different Factors on Coral Reef Bleaching"),
                plotlyOutput("bleaching_factors")
              ),
              sidebarPanel(
                selectInput(
                  inputId = "factor",
                  label = "Bleaching Causes",
-                 choices = c("HumanImpact", "Dynamite", "Poison", "Sewage", "Commercial", "Industrial"),
+                 choices = c("HumanImpact", "Dynamite", "Poison", "Sewage", 
+                             "Commercial", "Industrial"),
                  selected = "HumanImpact",
                  multiple = FALSE
                ),
@@ -127,7 +153,15 @@ my_ui <- navbarPage(
                  multiple = FALSE
                )
              )
-           )
+           ),
+           p("In this chart, we display how many coral reefs are affected by each of 
+           the bleaching causes, from direct human impact, sewage, poison, and other 
+           causes, and how the numbers have changed over time. We can also see how 
+           many bleachings have occurred by high, moderate, and low levels of each 
+           of these factors. By understanding this, we can see trends in these causes 
+           and learn how human based factors affect coral bleaching events around 
+           the world. It is important to know this information so that we can then 
+           work towards minimizing our impact.")
   ),
   tabPanel("Conclusion",
            fluidPage(
