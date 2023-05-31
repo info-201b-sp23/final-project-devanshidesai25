@@ -109,7 +109,7 @@ my_server <- function(input, output, session) {
   })
   
   output$bleaching_oceans <- renderPlotly({
-    selected_oceans_years <- coral_reef_data %>%
+    selected_oceans_years <- ocean_data %>%
       filter(Ocean %in% input$ocean) %>%
       filter(Year >= input$years[1], Year <= input$years[2])
     

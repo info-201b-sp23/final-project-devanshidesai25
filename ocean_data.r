@@ -4,10 +4,11 @@ library(plotly)
 
 coral_reef_data <- read.csv("raw_reef_check_data.csv")
 
-coral_reef_data <- coral_reef_data %>%
+ocean_data <- coral_reef_data %>%
   group_by(Year, Ocean) %>%
   summarise(bleaching = sum(Average_bleaching), .groups = 'drop') %>%
   filter(Ocean!="")
+
 
 
 
