@@ -60,7 +60,6 @@ my_ui <- navbarPage(
                  )
                ),
                mainPanel(
-                 h3("Image Placeholder"),
                  tags$img(src = "https://media.cnn.com/api/v1/images/stellar/prod/200407132036-03-great-barrier-reef-bleaching-04-07.jpg?q=x_5,y_259,h_1441,w_2561,c_crop/h_720,w_1280/f_webp", width = "100%")
                )
              )
