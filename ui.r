@@ -30,16 +30,16 @@ my_ui <- navbarPage(
                  p("To answer these questions, we utilize multiple datasets:"),
                  tags$ol(
                    tags$li(
-                     tags$strong("Coral Reef Bleaching Data:"), " Source: [INSERT DATA SOURCE URL]",
-                     p("This dataset provides information on the occurrence and severity of coral reef bleachings across different regions and time periods. It includes data on bleaching levels, geographical coordinates of reef locations, and additional attributes.")
+                     tags$strong("NOAA Reef Check & Coral Bleaching Data:"), " Source: [https://www.kaggle.com/datasets/oasisdata/noaa-reef-check-coral-bleaching-data]",
+                     p("The first dataset that we will be using is from the National Oceanic and Atmospheric Administration (NOAA), and is published on the website, Kaggle. This data was collected by the NOAA’s Coral Reef Watch program, which uses remote sensing and satellite technology to monitor coral reef ecosystems around the world, so that they can better understand the effects of climate change and other environmental factors on the health of coral reefs.")
                    ),
                    tags$li(
-                     tags$strong("Oceanic Data:"), " Source: [INSERT DATA SOURCE URL]",
-                     p("This dataset contains information on various oceans, including their boundaries, characteristics, and ecological factors that may influence coral reef health.")
+                     tags$strong("raw_reef_check_data:"), " Source: [https://github.com/InstituteForGlobalEcology/Coral-bleaching-a-global-analysis-of-the-past-two-decades/tree/master]",
+                     p("The second dataset that we are using is from Institute For Global Ecoclogy. The dataset showing us the analysis of coral bleaching of the past two decades. It includes data on the frequency and severity of each cause over time.")
                    ),
                    tags$li(
-                     tags$strong("Causes of Coral Reef Bleaching:"), " Source: [INSERT DATA SOURCE URL]",
-                     p("This dataset offers insights into the primary causes of coral reef bleachings, such as human impact, dynamite fishing, pollution, and other factors. It includes data on the frequency and severity of each cause over time.")
+                     tags$strong("reefs_with_coordinates:"), " Source: [https://www.reefcheck.org]",
+                     p("The third dataset that we are using is from Reef Check, which is an organization of professional scientists who collect data at coral reef sites and measure evironmental factors such as water temperature, acidification, etc. as well as how many coral colonies are bleached. There are 9,215 data observations in this data set ranging from the years 1998 to 2017.")
                    )
                  ),
                  h3("Ethical Considerations and Limitations"),
